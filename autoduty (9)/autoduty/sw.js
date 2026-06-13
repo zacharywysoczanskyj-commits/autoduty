@@ -1,4 +1,4 @@
-const CACHE = 'autoduty-v4';
+const CACHE = 'autoduty-v8';
 const ASSETS = ['/', '/index.html', '/manifest.json'];
 
 self.addEventListener('install', e => {
@@ -20,7 +20,7 @@ self.addEventListener('fetch', e => {
   if(e.request.url.includes('api.anthropic.com') || 
      e.request.url.includes('googleapis.com') ||
      e.request.url.includes('fonts.') ||
-     e.request.url.includes('.netlify/functions')) {
+     e.request.url.includes('.netlify/functions') || e.request.url.includes('/api/anthropic')) {
     e.respondWith(fetch(e.request));
     return;
   }
